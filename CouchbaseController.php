@@ -128,6 +128,12 @@ class CouchbaseController extends \yii\console\Controller
 
 	}
 
+	public function setTimeOut($timeout) {
+		if($this->_cluster != null) {
+			$this->_cluster->setTimeOut($timeout);
+		}
+	}
+
 	private function getLastSyncTime($table_name, $bucket) {
 		try {
 			$result = $bucket->get($table_name . '_last_sync_time');
